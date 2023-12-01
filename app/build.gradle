@@ -14,7 +14,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.marvelapp"
+        applicationId "com.pedroabreudev.marvelapp"
         minSdkVersion 24
         targetSdkVersion 33
         versionCode 1
