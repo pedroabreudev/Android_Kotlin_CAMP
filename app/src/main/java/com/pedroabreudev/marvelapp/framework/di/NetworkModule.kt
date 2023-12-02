@@ -2,6 +2,7 @@ package com.pedroabreudev.marvelapp.framework.di
 
 import com.pedroabreudev.marvelapp.framework.network.interceptor.AuthorizationInterceptor
 import com.pedroabreudev.marvelapp.BuildConfig
+import com.pedroabreudev.marvelapp.framework.network.MarvelApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -63,12 +64,12 @@ object NetworkModule {
         okHttpClient: OkHttpClient,
         converterFactory: GsonConverterFactory,
 //        @BaseUrl baseUrl: String
-    ): Retrofit {
+    ): MarvelApi {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(converterFactory)
             .build()
-//            .create(MarvelApi::class.java)
+            .create(MarvelApi::class.java)
     }
 }
