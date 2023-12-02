@@ -1,6 +1,6 @@
 package com.pedroabreudev.marvelapp.framework.di
 
-import com.pedroabreudev.core.data.network.interceptor.AuthorizationInterceptor
+import com.pedroabreudev.marvelapp.framework.network.interceptor.AuthorizationInterceptor
 import com.pedroabreudev.marvelapp.BuildConfig
 import dagger.Module
 import dagger.Provides

@@ -1,4 +1,4 @@
-package com.pedroabreudev.core.data.network.response
+package com.pedroabreudev.marvelapp.framework.network.response
 
 data class ThumbnailResponse(
     val path: String,
