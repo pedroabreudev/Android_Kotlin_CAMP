@@ -1,6 +1,6 @@
 package com.pedroabreudev.marvelapp.framework.di
 
-import com.pedroabreudev.core.data.network.MarvelApi
+import com.pedroabreudev.core.data.network.interceptor.AuthorizationInterceptor
 import com.pedroabreudev.marvelapp.BuildConfig
 import dagger.Module
 import dagger.Provides
@@ -31,23 +31,23 @@ object NetworkModule {
         }
     }
 
-//    @Provides
-//    fun provideAuthorizationInterceptor(): AuthorizationInterceptor {
-//        return AuthorizationInterceptor(
-//            publicKey = BuildConfig.PUBLIC_KEY,
-//            privateKey = BuildConfig.PRIVATE_KEY,
-//            calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
-//        )
-//    }
+    @Provides
+    fun provideAuthorizationInterceptor(): AuthorizationInterceptor {
+        return AuthorizationInterceptor(
+            publicKey = BuildConfig.PUBLIC_KEY,
+            privateKey = BuildConfig.PRIVATE_KEY,
+            calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+        )
+    }
 
     @Provides
     fun provideOkHttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
-//        authorizationInterceptor: AuthorizationInterceptor
+        authorizationInterceptor: AuthorizationInterceptor
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
-//            .addInterceptor(authorizationInterceptor)
+            .addInterceptor(authorizationInterceptor)
             .readTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
             .connectTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
             .build()
