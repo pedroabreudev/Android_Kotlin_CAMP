@@ -28,7 +28,7 @@ class CharactersPagingSource(
             val characterPaging = remoteDataSource.fetchCharacters(queries)
 
             val responseOffset = characterPaging.data.offset
-            val totalCharacters = characterPaging.data.totalL
+            val totalCharacters = characterPaging.data.total
 
             LoadResult.Page(
                 data = characterPaging.data.results.map { it.toCharacterModel() },
